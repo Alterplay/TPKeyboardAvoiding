@@ -342,6 +342,7 @@ static const int kStateKey;
     UIEdgeInsets newInset = self.contentInset;
     CGRect keyboardRect = state.keyboardRect;
     newInset.bottom = keyboardRect.size.height - MAX((CGRectGetMaxY(keyboardRect) - CGRectGetMaxY(self.bounds)), 0);
+    newInset.bottom += 20.0;
     return newInset;
 }
 
