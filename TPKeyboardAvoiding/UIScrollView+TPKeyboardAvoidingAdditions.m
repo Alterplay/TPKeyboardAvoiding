@@ -49,7 +49,9 @@ static const int kStateKey;
     NSDictionary *info = [notification userInfo];
     TPKeyboardAvoidingState *state = self.keyboardAvoidingState;
     
-    state.animationDuration = [[info objectForKey:kUIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    if ( !state.keyboardVisible) {
+        state.animationDuration = [[info objectForKey:kUIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    }
 
     CGRect keyboardRect = [self convertRect:[[info objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue] fromView:nil];
     if (CGRectIsEmpty(keyboardRect)) {
